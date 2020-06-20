@@ -1,0 +1,73 @@
+<div style="margin-bottom: 30px;">
+  <div *ngIf="movieDetails">
+    <div fxLayout="row" fxLayout.lt-sm="column" fxLayoutGap="12">
+      <div fxFlex="25" fxFlex.lt-sm="100">
+        <img
+          style="width: 100%; object-fit: cover; border-radius: 4px;"
+          src="https://image.tmdb.org/t/p/w300///{{ movieDetails.poster_path }}"
+          alt="d"
+        />
+      </div>
+
+      <div fxFlex="75" fxFlex.lt-sm="100" fxFlexOffset="20px">
+        <div class="movie-details-row">
+          <div class="title" style="padding-bottom: 0;">Title:</div>
+          <h3>
+            <strong>{{ movieDetails.title }}</strong>
+          </h3>
+        </div>
+
+        <div class="movie-details-row">
+          <div class="title">Overview:</div>
+          <p>
+            {{ movieDetails.overview }}
+          </p>
+        </div>
+
+        <div class="movie-details-row">
+          <div class="title">Release date:</div>
+          <p>
+            {{ movieDetails.release_date }}
+          </p>
+        </div>
+
+        <div class="movie-details-row">
+          <div class="title">Budget:</div>
+          <p>{{ movieDetails.budget | currency: "USD" }}</p>
+        </div>
+
+        <div class="movie-details-row">
+          <div class="title">Revenue:</div>
+          <p>{{ movieDetails.revenue | currency: "USD" }}</p>
+        </div>
+
+        <div class="movie-details-row">
+          <div class="title">Duration:</div>
+          <p>
+            {{ movieDetails.runtime }}
+          </p>
+        </div>
+
+        <div *ngIf="movieGenres" class="movie-details-row">
+          <ul class="genre-list">
+            <li *ngFor="let genre of movieGenres">
+              {{ genre.name }}
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <app-movieposters [posterts]="moviePosters"></app-movieposters>
+  </div>
+
+  <div>
+    <app-moviecast [castcrews]="movieCast"></app-moviecast>
+  </div>
+
+  <!-- <div>
+    <app-moviecard [moviesData]="recommendations"></app-moviecard>
+  </div> -->
+</div>

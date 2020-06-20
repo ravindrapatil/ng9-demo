@@ -1,0 +1,8 @@
+<p>parent works! -------></p>
+<p>total => {{ totalcartval }}</p>
+<p>{{fromChild}}</p>
+<app-child
+  [message]="messageToChild"
+  (getUserData)="getData($event)"
+  (toParent)="parentData($event)"
+></app-child>

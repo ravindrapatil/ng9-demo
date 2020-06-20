@@ -1,0 +1,19 @@
+<div *ngIf="posterts">
+  <h3 style="font-weight: bold;">Posters</h3>
+  <div
+    fxLayout="row"
+    fxLayout.xs="column"
+    fxLayoutAlign="space-between center"
+    fxLayoutGap="10px"
+    class="stats-card"
+  >
+    <div fxFlex="15" *ngFor="let poster of posterts">
+      <div>
+        <img
+          src="https://image.tmdb.org/t/p/original///{{ poster.file_path }}"
+          class="poster"
+        />
+      </div>
+    </div>
+  </div>
+</div>

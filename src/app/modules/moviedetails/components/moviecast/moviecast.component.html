@@ -1,0 +1,45 @@
+<div *ngIf="castcrews">
+  <div
+    fxLayout="row wrap"
+    fxLayoutAlign="space-between"
+    style="margin: 20px 0 10px;"
+  >
+    <h3 style="margin: 0;"><strong>Top Billed Cast</strong></h3>
+    <button
+      mat-flat-button
+      color="primary"
+      style="font-size: 12px; line-height: 30px;"
+      (click)="showMore()"
+    >
+      {{ text }}
+    </button>
+  </div>
+
+  <div fxLayout="row wrap" fxLayoutAlign="space-between">
+    <div
+      fxFlex="0 0 100%"
+      [ngStyle]="{ 'margin.px': 6, 'margin-bottom.px': 20 }"
+      fxFlex.gt-xs="0 0 calc(10% - 6px)"
+      *ngFor="let cast of castcrews | slice: 0:itemsToShow"
+      style="position: relative;"
+    >
+      <div class="imagecontainer" *ngIf="cast">
+        <ng-container *ngIf="cast.profile_path !== null">
+          <img
+            src="https://image.tmdb.org/t/p/original///{{ cast.profile_path }}"
+            class="poster image"
+          />
+        </ng-container>
+        <ng-container *ngIf="cast.profile_path === null">
+          <img
+            src="../../../../../assets/default-avatar.png"
+            class="poster image"
+          />
+        </ng-container>
+        <div class="middle">
+          <div class="text">{{ cast.name }}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

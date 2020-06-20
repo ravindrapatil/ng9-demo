@@ -1,0 +1,29 @@
+<div fxLayout="row wrap" style="margin-bottom: 30px;">
+    <div
+      *ngFor="let movie of moviesData"
+      fxFlex="0 0 100%"
+      [ngStyle]="{ 'margin.px': 6, 'margin-bottom.px': 20 }"
+      fxFlex.gt-xs="0 0 calc(31% - 6px)"
+      fxFlex.gt-sm="0 0 calc(20% - 12px)"
+    >
+      <!-- fxFlex.gt-sm="0 0 calc(16% - 24px)"
+        fxFlex.gt-md="0 0 calc(20% - 24px)"
+        [ngStyle.gt-sm]="{ 'margin.px': 12 }"
+        fxFlex.lt-lg="0 0 calc(36% - 24px)"
+        fxLayoutAlign="space-between center" -->
+      <mat-card class="example-card" style="padding-top: 0;">
+        <a [routerLink]="['/moviedetail', movie.id]" mat-list-item routerLinkActive="list-item-active">
+          <img
+            mat-card-image
+            src="https://image.tmdb.org/t/p/w185//{{ movie.poster_path }}"
+            alt="{{ movie.title }}"
+            title="{{ movie.title }}"
+          />
+        </a>
+        <mat-card-content>
+          <h4 title="{{ movie.title }}" class="title">{{ movie.title }}</h4>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+  

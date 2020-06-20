@@ -1,0 +1,17 @@
+<mat-tab-group mat-align-tabs="center" (selectedTabChange)="onChange($event)">
+  <mat-tab label="Popular" id="popular">
+    <div style="margin-top: 20px;">
+      <app-moviecard [moviesData]="movies"></app-moviecard>
+    </div>
+  </mat-tab>
+  <mat-tab label="Top Rated" id="topRated">
+    <div style="margin-top: 20px;">
+      <app-moviecard [moviesData]="topRatedMovies"></app-moviecard>
+    </div>
+  </mat-tab>
+  <mat-tab label="Upcoming" id="upcoming">
+    <div style="margin-top: 20px;">
+      <app-moviecard [moviesData]="upcomingMovies"></app-moviecard>
+    </div>
+  </mat-tab>
+</mat-tab-group>
