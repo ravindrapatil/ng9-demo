@@ -67,7 +67,8 @@
     <app-moviecast [castcrews]="movieCast"></app-moviecast>
   </div>
 
-  <!-- <div>
+  <div *ngIf="recommendations">
+    <h4><strong>Recommendations</strong></h4>
     <app-moviecard [moviesData]="recommendations"></app-moviecard>
-  </div> -->
+  </div>
 </div>

@@ -9,6 +9,7 @@ import { MoviepostersComponent } from './components/movieposters/movieposters.co
 import { MoviecastComponent } from './components/moviecast/moviecast.component';
 
 import { MatButtonModule } from '@angular/material/button';
+import { ThemoviedbModule } from '../themoviedb/themoviedb.module';
 
 const ngMaterial = [MatButtonModule,]
 
@@ -23,6 +24,7 @@ const ngMaterial = [MatButtonModule,]
     CommonModule,
     MoviedetailsRoutingModule,
     FlexLayoutModule,
+    ThemoviedbModule,
     ...ngMaterial
   ],
   exports: [

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
 import { MoviedetailsService } from '../../services/moviedetails.service';
 
 @Component({
@@ -14,41 +14,61 @@ export class MoviedetailsComponent implements OnInit {
   moviePosters: any = [];
   movieCast: any = [];
   recommendations: any = [];
+  mySubscription: any;
 
   constructor(
     private activatedRoute: ActivatedRoute,
+    private router: Router,
     private moviedetailsService: MoviedetailsService
-  ) {}
+  ) {
+    this.router.routeReuseStrategy.shouldReuseRoute = function () {
+      return false;
+    };
+
+    this.mySubscription = this.router.events.subscribe((event) => {
+      if (event instanceof NavigationEnd) {
+        // Trick the Router into believing it's last link wasn't previously loaded
+        this.router.navigated = false;
+      }
+    });
+  }
+
+  ngOnDestroy() {
+    if (this.mySubscription) {
+      this.mySubscription.unsubscribe();
+    }
+  }
 
   ngOnInit(): void {
     this.activatedRoute.paramMap.subscribe((params) => {
-      console.log(params['params']['id']);
       this.movieId = params['params']['id'];
     });
 
+    this.doMultipleTask();
+  }
+
+  doMultipleTask() {
+    console.log('yes');
     this.moviedetailsService.getMovieDetails(this.movieId).subscribe((res) => {
-      console.log('Movie details ', res);
       this.movieDetails = res;
       this.movieGenres = res.genres;
     });
 
     this.moviedetailsService.getImages(this.movieId).subscribe((res) => {
-      console.log('Posters ', res);
       let posters = res.posters;
       posters.length = 10;
       this.moviePosters = posters;
     });
 
     this.moviedetailsService.getCredits(this.movieId).subscribe((res) => {
-      console.log('cast ', res);
       let crew = res.cast;
       crew.length = 30;
       this.movieCast = crew;
     });
 
     this.moviedetailsService
-      .getRecommendations(this.movieId).subscribe((res) => {
-        console.log('Recommendations', res);
+      .getRecommendations(this.movieId)
+      .subscribe((res) => {
         this.recommendations = res.results;
       });
   }

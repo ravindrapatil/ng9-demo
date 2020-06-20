@@ -8,11 +8,20 @@
     class="stats-card"
   >
     <div fxFlex="15" *ngFor="let poster of posterts">
-      <div>
-        <img
+      <div *ngIf="poster">
+        <ng-container *ngIf="poster.file_path !== null">
+          <img
           src="https://image.tmdb.org/t/p/original///{{ poster.file_path }}"
           class="poster"
         />
+        </ng-container>
+        <ng-container *ngIf="poster.file_path === null">
+          <img
+          src="../../../../../assets/default-movie.jpg"
+          class="poster"
+        />
+        </ng-container>
+        
       </div>
     </div>
   </div>

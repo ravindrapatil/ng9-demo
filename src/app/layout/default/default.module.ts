@@ -9,37 +9,26 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatCardModule } from '@angular/material/card';
 import { FlexLayoutModule } from '@angular/flex-layout';
-// import { DashboardService } from 'src/app/modules/services/dashboard.service';
-// import { MoviesComponent } from 'src/app/modules/movies/movies.component';
-// import { MoviesService } from 'src/app/modules/services/themoviedb/movies.service';
-// import { MoviecardComponent } from 'src/app/modules/movies/moviecard/moviecard.component';
 import { MatTabsModule } from '@angular/material/tabs';
-// import { MoviedetailsComponent } from 'src/app/modules/movies/moviedetails/moviedetails.component';
-import { ThemoviedbModule } from 'src/app/modules/themoviedb/themoviedb.module';
 import { DashboardService } from 'src/app/modules/dashboard/services/dashboard.service';
 
-const ngMaterial = [MatSidenavModule, MatDividerModule, MatCardModule, MatTabsModule];
+const ngMaterial = [
+  MatSidenavModule,
+  MatDividerModule,
+  MatCardModule,
+  MatTabsModule,
+];
 
 @NgModule({
-  declarations: [
-    DefaultComponent,
-    DashboardComponent,
-    PostsComponent,
-    // MoviesComponent,
-    // MoviecardComponent,
-    // MoviedetailsComponent
-  ],
+  declarations: [DefaultComponent, DashboardComponent, PostsComponent],
   imports: [
     CommonModule,
     RouterModule,
     SharedModule,
-    ThemoviedbModule,
     FlexLayoutModule,
-    ...ngMaterial
+    ...ngMaterial,
   ],
-  providers: [
-    DashboardService,
-    // MoviesService
-  ]
+  providers: [DashboardService],
 })
-export class DefaultModule { }
+
+export class DefaultModule {}
