@@ -57,7 +57,13 @@ export class MoviedetailsComponent implements OnInit {
     this.moviedetailsService.getImages(this.movieId).subscribe((res) => {
       let posters = res.posters;
       posters.length = 10;
-      this.moviePosters = posters;
+      let newPostersArray = posters.map(item => {
+        return {
+           img: `https://image.tmdb.org/t/p/original///${item.file_path}`,
+           thumbnail: `https://image.tmdb.org/t/p/original///${item.file_path}`
+        }
+       })
+      this.moviePosters = newPostersArray;
     });
 
     this.moviedetailsService.getCredits(this.movieId).subscribe((res) => {

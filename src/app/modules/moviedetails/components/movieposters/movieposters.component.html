@@ -6,16 +6,17 @@
     fxLayoutAlign="space-between center"
     fxLayoutGap="10px"
     class="stats-card"
+    photoGalleryGroup
   >
-    <div fxFlex="15" *ngFor="let poster of posterts">
+    <div fxFlex="15" *ngFor="let poster of posterts" [photoGallery]="poster.thumbnail">
       <div *ngIf="poster">
-        <ng-container *ngIf="poster.file_path !== null">
+        <ng-container *ngIf="poster.img !== null">
           <img
-          src="https://image.tmdb.org/t/p/original///{{ poster.file_path }}"
+          [src]="poster.img"
           class="poster"
         />
         </ng-container>
-        <ng-container *ngIf="poster.file_path === null">
+        <ng-container *ngIf="poster.img === null">
           <img
           src="../../../../../assets/default-movie.jpg"
           class="poster"

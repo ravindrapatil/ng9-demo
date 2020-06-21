@@ -7,7 +7,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { MoviedetailsService } from './services/moviedetails.service';
 import { MoviepostersComponent } from './components/movieposters/movieposters.component';
 import { MoviecastComponent } from './components/moviecast/moviecast.component';
-
+import { PhotoGalleryModule } from '@twogate/ngx-photo-gallery'
 import { MatButtonModule } from '@angular/material/button';
 import { ThemoviedbModule } from '../themoviedb/themoviedb.module';
 
@@ -24,6 +24,7 @@ const ngMaterial = [MatButtonModule,]
     CommonModule,
     MoviedetailsRoutingModule,
     FlexLayoutModule,
+    PhotoGalleryModule,
     ThemoviedbModule,
     ...ngMaterial
   ],
